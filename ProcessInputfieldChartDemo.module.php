@@ -28,6 +28,10 @@ class ProcessInputfieldChartDemo extends Process {
           'url' => 'grid/',
           'label' => 'Grid',
           'icon' => 'columns',
+        ],[
+          'url' => 'grid2/',
+          'label' => 'Grid2',
+          'icon' => 'columns',
         ],
       ]
     ];
@@ -87,5 +91,60 @@ class ProcessInputfieldChartDemo extends Process {
     ]);
     
     return $form->render();
+  }
+  
+  /**
+   * Grid Dashboard
+   */
+  public function executeGrid2() {
+    $this->headline('Grid Demo 2');
+    $this->browserTitle('Grid Demo 2');
+    
+    $one = $this->modules->get('InputfieldForm');
+    $one->add([
+      'type' => 'markup',
+      'label' => 'one foo',
+      'value' => 'one foo',
+    ]);
+    $one->add([
+      'type' => 'markup',
+      'label' => 'one bar',
+      'value' => 'one bar',
+    ]);
+    
+    $two = $this->modules->get('InputfieldForm');
+    $two->add([
+      'type' => 'markup',
+      'label' => 'two foo',
+      'value' => 'two foo',
+    ]);
+    $two->add([
+      'type' => 'markup',
+      'label' => 'two bar',
+      'value' => 'two bar',
+    ]);
+    
+    $three = $this->modules->get('InputfieldForm');
+    $three->add([
+      'type' => 'markup',
+      'label' => 'three foo',
+      'value' => 'three foo',
+    ]);
+    $three->add([
+      'type' => 'markup',
+      'label' => 'three bar',
+      'value' => 'three bar',
+    ]);
+
+    $out = "<div uk-grid>"
+      ."<div class='uk-width-1-4@m'>"
+        ."<div class='uk-margin uk-text-center uk-text-bold'>ONE</div>"
+        ."<div class=' uk-card uk-card-default'>{$one->render()}</div>"
+      ."</div>"
+      ."<div class='uk-width-1-2@m'><div class=' uk-card uk-card-default'>{$two->render()}</div></div>"
+      ."<div class='uk-width-1-4@m'><div class=' uk-card uk-card-default'>{$three->render()}</div></div>"
+    ."</div>";
+    
+    return $out;
   }
 }
