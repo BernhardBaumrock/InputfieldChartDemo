@@ -33,10 +33,6 @@ class ProcessInputfieldChartDemo extends Process {
     ];
   }
 
-  public function init() {
-    parent::init(); // always remember to call the parent init
-  }
-
   /**
    * Default Dashboard
    */
