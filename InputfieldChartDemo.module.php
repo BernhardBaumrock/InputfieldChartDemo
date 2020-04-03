@@ -9,10 +9,16 @@ class InputfieldChartDemo extends InputfieldMarkup {
       'summary' => 'ChartJS Demo Inputfield',
       'icon' => 'bar-chart',
       'requires' => [],
-      'installs' => [],
+      'installs' => ['ProcessInputfieldChartDemo'],
     ];
   }
 
+  /**
+   * Add scripts on renderReady
+   * 
+   * It is important to load scripts on renderReady instead of render so that
+   * AJAX loaded fields do have their assets available when the content is loaded!
+   */
   public function renderReady(Inputfield $parent = null, $renderValueMode = false) {
     $url = $this->config->urls($this);
     $this->config->scripts->add($url."chart.js");
@@ -31,11 +37,9 @@ class InputfieldChartDemo extends InputfieldMarkup {
   }
 
   /**
-  * Process the Inputfield's input
-  * @return $this
+  * We do not save any data to the database
   */
   public function ___processInput($input) {
     return false;
   }
-
 }
